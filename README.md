@@ -11,3 +11,8 @@ cd open-tamil-web-interface
 python webapp.py
 
 open browser and put 127.0.0.1:8080
+
+To do:
+      Improve User Interface design
+      Add another tamil text processing utilities
+      improve the performance of webapp
