@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>open-tamil-web</title>
+	<script src="{{ url_for('static', filename='jquery.min.js') }}">
+	</script>
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/sidemenu.css">
+	<style type="text/css">
+		section{
+			width: 82vw;
+			height: 100vh;
+			background-color: grey;
+		padding-top: 200px
+		}
+
+
+	</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-brand">
+			Open Tamil Web
+		
+	</div>
+</nav>
+<div class="container-fluid" style="margin-top: 50px">
+
+  <div class="row">
+    <div class="col-sm-3 col-lg-2">
+      <nav class="navbar navbar-inverse navbar-fixed-side">
+      <ul class="nav navbar-nav">
+      <li><a href="#"><b>Applications</b></a></li>
+	<li><a href="#home">Number</a></li>
+	<li><a href="#t2u">T2u</a></li>
+	<li><a href="#keechu">Keechu</a></li>
+	<li><a href="#numstr">Transliterator</a></li>
+	<li><a href="#spell">Spelling correction</a></li>
+	</ul>  <!-- normal collapsible navbar markup -->
+      </nav>
+    </div>
+    <div class="col-sm-9 col-lg-10">
+   <section id="home">
+	<center>
+
+<input type="text" name="text" placeholder="enter the number" id="txt"><br>
+<input type="button" value="submit" id="btn">
+<p id="disp">
+	
+</p>
+</center>
+</section>
+<section id="t2u">
+	<center>
+<input type="text" name="text" id="txt1"><br>
+<input type="button" value="submit" id="btn1">
+<p id="disp1">
+	
+</p>
+</center>
+</section>
+<section id="keechu">
+	<center>
+<input type="text" name="text" id="txt2"><br>
+<input type="button" value="submit" id="btn2">
+<p id="disp2">
+	
+</p>
+</center>
+</section>
+<section id="numstr">
+	<center>
+<input type="text" name="text" id="txt3"><br>
+<input type="button" value="submit" id="btn3">
+<p id="disp3">
+	
+</p>
+</center>
+</section>
+<section id="spell">
+	<center>
+<input type="text" name="text" id="txt4"><br>
+<input type="button" value="submit" id="btn4">
+
+<p id="disp4">
+	
+</p>
+</center>
+</section>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#txt').keyup(function(){
+    var dat = $('#txt').val()
+    $.ajax({
+    	url: '/'+dat,
+    	success: function(data){
+        $('#disp').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#btn4').click(function(){
+    var dat = $('#txt4').val()
+    $.ajax({
+    	url: '/spell/'+dat,
+    	success: function(data){
+    		var str=''
+    		for(var i=0;i<data.length;i++){
+          var t='<li>'+data[i]+'</li>'
+    		str+=t
+    		}
+        $('#disp4').html('<ul>'+str+'</ul>')
+    	}
+    })
+  	})
+	})
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#btn1').click(function(){
+    var dat = $('#txt1').val()
+    $.ajax({
+    	url: '/tsci/'+dat,
+    	success: function(data){
+        $('#disp1').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#btn2').click(function(){
+    var dat = $('#txt2').val()
+    $.ajax({
+    	url: '/keechu/'+dat,
+    	success: function(data){
+    		var count=0
+    	var len=0
+    		for(var data1 in data){
+    			len+=data[count]
+    			count+=1
+    			
+    	}
+    	$('#disp2').text('No of Word is '+' '+count+' '+' and No of letter is '+' '+len)
+    	}
+    })
+  	})
+	})
+
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#txt3').keyup(function(){
+    var dat = $('#txt3').val()
+    $.ajax({
+    	url: '/translite/'+dat,
+    	success: function(data){
+        $('#disp3').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+</body>
+</html>
