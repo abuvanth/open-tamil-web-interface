@@ -13,6 +13,8 @@ python webapp.py
 open browser and put 127.0.0.1:8080
 
 To do:
-      Improve User Interface design
-      Add another tamil text processing utilities
-      improve the performance of webapp
+      1) Improve User Interface design
+      
+      2) Add another tamil text processing utilities
+      
+     3) Improve the performance of webapp
