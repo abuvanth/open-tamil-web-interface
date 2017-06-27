@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block title %}Tamil Number{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+<section id="translite">
+<div class="col-sm-9">
+<div class="page-header">
+  <h1>Transliterator</h1>
+</div>
+<p>This application helps you to transliterate text from any Indian language to any other Indian language. Enter the text for transliteration in the below text area. Language of each  word will be detected. You can give the text in any language and even with mixed language. For Tamil alone, English->Tamil, Transliteration is available.</p>
+
+
+       <form action="" class="form-horizontal">
+    <div class="form-group">
+        <textarea name='input_text' id='txt3' rows="10" cols="80" class="" placeholder="Type here english text"></textarea>
+    </div>
+    
+</form>
+<center>
+<p id="disp3" class="important">
+	
+</p>
+</center>
+</div>
+</section>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#txt3').keyup(function(){
+    var dat = $('#txt3').val()
+    $.ajax({
+    	url: '/translite/'+dat,
+    	success: function(data){
+        $('#disp3').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+{% endblock %}

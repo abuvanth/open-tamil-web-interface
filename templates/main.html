@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+{% block head %}
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}- Indic Language Computing Platform </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Indian Language Computing Platform">
+    <meta name="author" content="Open Tamil Developers">
+
+    <link href="{{url_for('static',filename='bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static',filename='main.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static',filename='jquery.ime.css')}}"  />
+{% endblock %}
+  </head>
+  <body>
+<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top silpa-navbar" role="navigation">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="/">Open Tamil Web</a></li>
+         
+          
+        </ul>
+        <ul class="nav navbar-nav pull-right hidden-xs">
+          <li><a href="https://pypi.python.org/pypi/Open-Tamil/0.65">Documentation</a></li>
+        </ul>
+      </div> <!-- container -->
+    </div> <!-- navbar -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="sidebar-nav">
+            <!-- side bar goes here -->
+            <ul class="nav nav-tabs nav-stacked" role="navigation">
+              <li class="navbar-brand">Applications</li>
+              
+              <li><a href="/number">Tamil Number</a></li>
+              
+              <li><a href="/keechu">Keechu</a></li>
+              
+              <li><a href="/translite">Transliteration</a></li>
+              
+              <li><a href="/spell">Tamil Spell Checker</a></li>
+              
+              <li><a href="/tsci">Unicode Converter</a></li>
+              
+              <li><a href="/ngram">Tamil N-gram</a></li>
+              
+              <li><a href="/unigram">Tamil Unigram</a></li>
+              
+              <li><a href="/anagram">Tamil Anagram</a></li>
+
+            </ul>
+          </div>
+        </div>
+<div id="content">{% block content %}{% endblock %}</div>
+
+</body>
+</html>

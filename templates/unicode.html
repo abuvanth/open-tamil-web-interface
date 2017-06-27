@@ -1,0 +1,50 @@
+{% extends "main.html" %}
+{% block title %}Unicode Convertor{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+<section id="t2u">
+<div class="col-sm-9">
+<div class="page-header">
+    <h1>Unicode to Tscii</h1>
+</div>
+<textarea id='txt1' rows="10" cols="80" class="important"></textarea> <br>
+<div class="row">
+  <div class="col-xs-4">
+<select name="tp" id="st" class="form-control">
+<option value="u2t">Unicode to Tscii
+</option>
+<option value="t2u">Tscii to Unicode
+</option>
+</select>
+</div>
+<center>
+<input type="button" class="btn btn-success" value="Convert" id="btn1">
+<p id="disp1" class="important" style="padding-top:50px;font-size: 20px">
+	
+</p>
+</center>
+</div>
+</div>
+
+</section>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#btn1').click(function(){
+    var dat = $('#txt1').val()
+    var st = $('#st').val()
+    $.ajax({
+    	url: '/tsci/'+dat+"?cod="+st,
+    	success: function(data){
+        $('#disp1').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+{% block title %}Tamil Number{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #336699;font-size:25px }
+    </style>
+{% endblock %}
+{% block content %}
+<section id="home">
+<div class="col-sm-9">
+<div class="page-header">
+    <h1>Tamil Number</h1>
+</div>
+<center>
+<form class="form-inline form-group">
+    <div class="form-group">
+        <label for="word">Number</label>
+    </div>
+    <div class="form-group">
+        <input type="text" name="word" id="txt" class="form-control" placeholder="Please Enter the Number"/>
+    </div>
+</form>
+<p id="disp" class='important'>
+</p>
+</center>
+</div>
+</section>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#txt').keyup(function(){
+    var dat = $('#txt').val()
+    $.ajax({
+    	url: '/'+dat,
+    	success: function(data){
+        $('#disp').text(data.result)
+    	}
+    })
+  	})
+	})
+
+</script>
+{% endblock %}
