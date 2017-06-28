@@ -35,9 +35,13 @@
     $.ajax({
     	url: '/translite/'+dat,
     	success: function(data){
+        $('#disp3').show()
         $('#disp3').text(data.result)
     	}
     })
+if ($('#txt3').val()==''){
+$('#disp3').hide()
+}
   	})
 	})
 
