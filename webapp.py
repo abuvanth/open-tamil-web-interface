@@ -39,6 +39,9 @@ def keechu():
 @app.route("/spell")
 def spl():
      return render_template('spell.html')
+@app.route("/revers")
+def rev():
+     return render_template('reverse.html')
 @app.route("/number")
 def num():
      return render_template('number.html')
@@ -51,13 +54,17 @@ def unig():
 @app.route("/ngram")
 def ngra():
      return render_template('ngram.html')
-@app.route("/<num>")
+@app.route("/number/<num>")
 def numstr(num):
+    typ=request.args.get("type")
     if num.find(".")==-1:
        num=int(num)
     else:
        num=float(num)
-    out=tamil.numeral.num2tamilstr( num )
+    if typ=='IN':
+       out=tamil.numeral.num2tamilstr( num )
+    else:
+        out=tamil.numeral.num2tamilstr_american(num)
     data = { "result" : out}
     json_string = json.dumps(data,ensure_ascii = False)
     #creating a Response object to set the content type and the encoding
@@ -68,8 +75,9 @@ def unicod(tsci):
     cod=request.args.get("cod")
     if cod =='t2u':
        out=tamil.tscii.convert_to_unicode(tsci)
-    elif cod=='u2t':
-         out=unicode2tscii(tsci)
+    elif cod=='u2t':  
+         temp=tsci.decode('utf-8')
+         out=unicode2tscii(temp)
     data = { "result" : out}
     json_string = json.dumps(data,ensure_ascii = False)
     #creating a Response object to set the content type and the encoding
@@ -132,8 +140,15 @@ def anagram(word):
 def test_basic(word):
         #WordModels
     n= request.args.get("n")
-    print n
     t= get_ngram_groups( word, int(n))
+    json_string = json.dumps(t,ensure_ascii = False)
+    #creating a Response object to set the content type and the encoding
+    response = Response(json_string,content_type="application/json; charset=utf-8" )
+    return response
+@app.route('/revers/<word>')   
+def revers(word):
+        #WordModels
+    t=tamil.utf8.reverse_word(word)
     json_string = json.dumps(t,ensure_ascii = False)
     #creating a Response object to set the content type and the encoding
     response = Response(json_string,content_type="application/json; charset=utf-8" )
