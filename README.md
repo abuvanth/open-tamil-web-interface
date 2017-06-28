@@ -1,5 +1,5 @@
 # open-tamil-web-interface
-web app for open tamil project
+web app for open tamil project -  https://github.com/Ezhil-Language-Foundation/open-tamil
 
 Usage:
 
