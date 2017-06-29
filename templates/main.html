@@ -17,6 +17,8 @@
   </head>
   <body>
 <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='jquery.ime.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
     <div class="navbar navbar-inverse navbar-fixed-top silpa-navbar" role="navigation">
       <div class="container">
         <ul class="nav navbar-nav">
@@ -59,8 +61,8 @@
             </ul>
           </div>
         </div>
-<div id="content" class="col-sm-9">{% block content %}{% endblock %}</div>
-<footer class="navbar-fixed-bottom" role="contentinfo">
+<div id="content" class="col-sm-9">{% block content %}{% endblock %}</div></div></div>
+<footer role="contentinfo" class="footer">
       <div class="container">
         <p>All rights reserved. &copy2014-2017, Open Tamil Web Team</p>
         <p>Code licensed under <a href="http://www.fsf.org/licensing/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License.</a></p>
@@ -73,7 +75,7 @@
           <li class="muted">·</li>
           <li><a href="#">License</a></li>
           <li class="muted">·</li>
-          <li><a href=""mailto:tshrinivasan@gmail.com"">Contact</a></li>
+          <li><a href="mailto:tshrinivasan@gmail.com">Contact</a></li>
         </ul>
       </div>
     </footer>

@@ -8,7 +8,6 @@
 {% endblock %}
 {% block content %}
 <section id="translite">
-<div class="col-sm-9">
 <div class="page-header">
   <h1>Transliterator</h1>
 </div>
@@ -26,6 +25,25 @@
 	
 </p>
 </center>
+<div class="well">
+    <h3>Transliterator JSON API</h3>
+    <p>
+        This service provides tamil phonetics for a given english letters
+        <ul>
+            <li>Input data: English words or letters
+                <ul>
+                    <li>Return : equivalent tamil words </li>
+                </ul>
+            </li>
+        </ul>
+
+        Sample usage is given below.
+      
+  <pre>
+        http://open-tamil.herokuapp.com/translite/ammaa
+        Result: '{"result": "அம்மா"}'
+      </pre>
+    </p>
 </div>
 </section>
 <script type="text/javascript">
