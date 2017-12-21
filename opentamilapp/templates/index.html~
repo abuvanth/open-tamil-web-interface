@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>open-tamil-web</title>
+	<script src="{{ url_for('static', filename='jquerym.in.js') }}">
+	</script>
+	<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
+</head>
+<body>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$('#btn').click(fuction(){
+    var dat = $('#txt').val()
+    $('#disp').load('/'+dat)
+  	})
+	})
+
+</script>
+<center>
+<input type="text" name="text" id="txt"><br>
+<input type="button" value="submit" id="btn">
+<p id="disp">
+	
+</p>
+</center>
+</body>
+</html>
