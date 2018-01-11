@@ -7,3 +7,6 @@ git clone https://github.com/abuvanth/open-tamil-web-interface.git
 cd open-tamil-web-interface
 
 python manage.py runserver
+
+
+http://open-tamil.herokuapp.com/
